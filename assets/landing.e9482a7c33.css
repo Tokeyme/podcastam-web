@@ -1,0 +1,193 @@
+/* Landing pages of podcast.amapps.app (tool/web_landing.py). The app's own colours: dark
+   background #151218 and the lilac accent, so a click on "Open in Podcasts AM" lands in the same
+   world. System fonts only — nothing to download before the text shows. */
+:root {
+  color-scheme: dark;
+  --bg: #151218;
+  --surface: #1d1b20;
+  --surface-2: #2b2930;
+  --line: #49454f;
+  --text: #e6e0e9;
+  --muted: #cac4d0;
+  --accent: #d0bcff;
+  --on-accent: #381e72;
+  --radius: 16px;
+  --gutter: 16px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+/* [hidden] must win over .btn's display:inline-flex (the player bar's link). */
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-bottom: var(--bar-h, 0px); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding-bottom: calc(var(--bar-h, 0px) + 24px); /* the player bar's height, set by landing.js */
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .4em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 5vw, 46px); }
+h2 { font-size: clamp(22px, 3vw, 28px); margin-top: 0; }
+h3 { font-size: 18px; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Header */
+.site-head { border-bottom: 1px solid var(--surface-2); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none;
+  font-weight: 700; font-size: 18px; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.site-head nav { display: flex; align-items: center; gap: 16px; font-size: 15px; }
+.site-head nav a:not(.btn) { color: var(--muted); text-decoration: none; }
+.site-head nav a:not(.btn):hover { color: var(--text); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--line);
+  background: transparent; color: var(--accent); font: inherit; font-size: 16px; font-weight: 600;
+  text-decoration: none; cursor: pointer; white-space: nowrap; }
+.btn:hover { background: rgba(208, 188, 255, .08); }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn.primary:hover { background: #e0d2ff; }
+.btn.small { min-height: 36px; padding: 0 14px; font-size: 14px; }
+.btn svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+
+/* Breadcrumbs */
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0;
+  margin: 20px 0 8px; font-size: 14px; color: var(--muted); }
+.crumbs li + li::before { content: "›"; margin-right: 6px; }
+.crumbs a { color: var(--muted); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start;
+  padding: 16px 0 32px; }
+.hero .art { width: 280px; height: 280px; border-radius: var(--radius); background: var(--surface);
+  object-fit: cover; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 15px; margin-bottom: .5em; }
+.by { color: var(--muted); margin-bottom: .6em; }
+.tagline { font-size: 19px; }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 20px; }
+.chips li { font-size: 14px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px;
+  color: var(--muted); }
+.chips a { color: inherit; text-decoration: none; }
+.chips a:hover { color: var(--text); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+.note { color: var(--muted); font-size: 14px; }
+
+/* Sections */
+section.block { padding: 28px 0; border-top: 1px solid var(--surface-2); }
+.cols { display: grid; grid-template-columns: 1fr 320px; gap: 40px; }
+.facts dl { margin: 0; display: grid; gap: 12px; }
+.facts dl div { background: var(--surface); border-radius: 12px; padding: 12px 16px; }
+.facts dt { color: var(--muted); font-size: 14px; }
+.facts dd { margin: 0; font-weight: 600; }
+.highlights { padding-left: 1.2em; }
+.highlights li { margin-bottom: .4em; }
+
+/* Episode list */
+.episodes { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.ep { display: grid; grid-template-columns: 48px 1fr; gap: 16px; background: var(--surface);
+  border-radius: 14px; padding: 16px; }
+.ep h3 { margin-bottom: 2px; font-size: 17px; }
+.ep h3 a { color: var(--text); }
+.meta { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+.excerpt { color: var(--muted); font-size: 15px; margin: 0; }
+.play { width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--accent);
+  color: var(--on-accent); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.play:hover { background: #e0d2ff; }
+.play svg { width: 22px; height: 22px; fill: currentColor; }
+.play .i-pause, .playing .play .i-play, .play.playing .i-play { display: none; }
+.play.playing .i-pause { display: block; }
+.btn.play-latest .i-pause { display: none; }
+.btn.play-latest.playing .i-pause { display: block; }
+.btn.play-latest.playing .i-play { display: none; }
+
+/* Cards (hub, related) */
+.cards { list-style: none; padding: 0; margin: 0; display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border-radius: 14px; overflow: hidden; height: 100%; }
+.card a { display: block; color: var(--text); text-decoration: none; height: 100%; }
+.card a:hover { background: var(--surface-2); }
+.card a:focus-visible { outline-offset: -3px; border-radius: 14px; }
+.card img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--surface-2); }
+.card .card-text { padding: 12px 14px 14px; }
+.card .rank-label { color: var(--accent); font-size: 13px; font-weight: 600; }
+.card strong { display: block; line-height: 1.3; margin: 2px 0; }
+.card .card-sub { color: var(--muted); font-size: 14px; line-height: 1.4; }
+
+/* Genre ranking */
+.ranking { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.rank-item { display: grid; grid-template-columns: 40px 140px minmax(0, 1fr); gap: 20px; align-items: start;
+  background: var(--surface); border-radius: var(--radius); padding: 20px; }
+.rank { font-size: 28px; font-weight: 700; color: var(--accent); text-align: center; line-height: 1; }
+.rank-item img { width: 140px; height: 140px; border-radius: 12px; object-fit: cover;
+  background: var(--surface-2); }
+.rank-item h3 { font-size: 21px; margin-bottom: 2px; }
+.rank-item h3 a { color: var(--text); }
+.rank-item .actions { margin: 12px 0 0; }
+.rank-item .btn { white-space: normal; text-align: center; }
+
+/* FAQ */
+.faq details { background: var(--surface); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+.faq summary { cursor: pointer; font-weight: 600; }
+.faq details p { margin: 10px 0 0; color: var(--muted); }
+
+/* Call to action */
+.cta { background: linear-gradient(135deg, #2b2240, #1d1b20); border-radius: 20px; padding: 32px;
+  margin: 32px 0; }
+.cta p { color: var(--muted); max-width: 640px; }
+
+/* Footer */
+.site-foot { border-top: 1px solid var(--surface-2); margin-top: 32px; padding: 24px 0 40px;
+  color: var(--muted); font-size: 14px; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+.site-foot a { color: var(--muted); }
+
+/* Player bar */
+.player { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #211f26;
+  border-top: 1px solid var(--line); padding: 10px var(--gutter);
+  padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+.player[hidden] { display: none; }
+.player .wrap { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px minmax(120px, 2fr) auto;
+  gap: 14px; align-items: center; padding: 0; }
+.p-art { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; background: var(--surface-2); }
+.p-text { min-width: 0; line-height: 1.3; }
+.p-text strong, .p-text span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.p-text span { color: var(--muted); font-size: 14px; }
+.p-seek-wrap { display: flex; align-items: center; gap: 10px; }
+.p-seek { flex: 1; accent-color: var(--accent); min-width: 0; }
+.p-time { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.p-error { color: #ffb4ab; font-size: 14px; grid-column: 1 / -1; margin: 0; }
+/* Empty, the status region stays in the accessibility tree (a live region must exist before
+   its text arrives to be announced) but takes no room in the bar. */
+.p-error:empty { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .hero { grid-template-columns: 1fr; gap: 20px; }
+  .hero .art { width: 200px; height: 200px; }
+  .cols { grid-template-columns: 1fr; gap: 24px; }
+  .rank-item { grid-template-columns: 28px 88px minmax(0, 1fr); gap: 12px; padding: 16px; }
+  .rank-item img { width: 88px; height: 88px; }
+  .rank { font-size: 22px; }
+  .site-head nav .hide-narrow { display: none; }
+  .cta { padding: 24px 20px; }
+  .player .wrap { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 10px; }
+  .p-art { width: 44px; height: 44px; }
+  .player .play { width: 44px; height: 44px; }
+  .p-seek-wrap { grid-column: 1 / -1; }
+  .player .p-open { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 420px) {
+  .actions .btn { width: 100%; }
+  .rank-item { grid-template-columns: 1fr; }
+  .rank-item .rank { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

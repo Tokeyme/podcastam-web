@@ -10,7 +10,9 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Podcasts AM: charts, search and subscriptions in the browser.">
+  <meta name="description" content="Listen to podcasts free in your browser: Apple's podcast charts for more than 40 countries, search and the shows you follow. No account, nothing to install.">
+  <!-- Absolute: the <base> above points into the build folder. -->
+  <link rel="canonical" href="https://podcast.amapps.app/">
 
   <!--
     The app's own background, so nothing flashes white before the first frame.
@@ -28,7 +30,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>Podcasts AM</title>
+  <!-- Read before the app starts (link previews, crawlers that run no script). Once it
+       runs, the app sets the tab title to "Podcasts AM" (onGenerateTitle in lib/main.dart),
+       and a crawler that renders the page sees that one. -->
+  <title>Podcasts AM – listen to podcasts in your browser</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Podcasts AM","url":"https://podcast.amapps.app/"},{"@type":"WebApplication","name":"Podcasts AM","url":"https://podcast.amapps.app/","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","description":"A free podcast app that runs in the browser: Apple's podcast charts for more than 40 countries, search and subscriptions, no account.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}</script>
   <link rel="manifest" href="manifest.json">
 
   <style>
@@ -64,6 +70,8 @@
   </div>
   <noscript>
     <p>Podcasts AM needs JavaScript. · Podcasts AM braucht JavaScript.</p>
+    <!-- Static pages that work without it (tool/web_landing.py). -->
+    <p><a href="/top/">Top podcasts in the US right now</a></p>
   </noscript>
   <script src="flutter_bootstrap.js" async></script>
 </body>

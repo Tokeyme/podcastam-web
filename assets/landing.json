@@ -1,0 +1,25 @@
+{
+ "aktuell": {
+  "css": "landing.e9482a7c33.css",
+  "js": "landing.3f2e3f53fb.js"
+ },
+ "vorher": {},
+ "seiten": [
+  "/top/",
+  "/podcasts/the-daily/",
+  "/podcasts/the-joe-rogan-experience/",
+  "/podcasts/crime-junkie/",
+  "/podcasts/pod-save-america/",
+  "/podcasts/dateline-nbc/",
+  "/episodes/20-20-justice-for-faith/",
+  "/episodes/wait-wait-dont-tell-me-we-take-john-turturro-to-the-cheesecake-factory/",
+  "/episodes/pod-save-america-what-the-final-polls-tell-us/",
+  "/episodes/stuff-you-should-know-selects-salem-witchcraft-trials-more-bonkers/",
+  "/episodes/the-joe-rogan-experience-2574-francis-foster-and-konstantin-kisin/",
+  "/genres/business/",
+  "/genres/true-crime/",
+  "/genres/news/",
+  "/genres/comedy/",
+  "/genres/society-and-culture/"
+ ]
+}
