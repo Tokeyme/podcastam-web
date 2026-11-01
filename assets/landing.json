@@ -3,7 +3,10 @@
   "css": "landing.e9482a7c33.css",
   "js": "landing.3f2e3f53fb.js"
  },
- "vorher": {},
+ "vorher": {
+  "css": "landing.e9482a7c33.css",
+  "js": "landing.3f2e3f53fb.js"
+ },
  "seiten": [
   "/top/",
   "/podcasts/the-daily/",
