@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    Replaced by the value of `--base-href` at build time; tool/web_site.py
+    points it at the build's own folder (r/<build>/), so a new build never
+    mixes with files a browser still holds from the last one.
+  -->
+  <base href="/r/581daf72699c/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Podcasts AM: charts, search and subscriptions in the browser.">
+
+  <!--
+    The app's own background, so nothing flashes white before the first frame.
+    Must match buildAppTheme() — test/platform_manifest_test.dart checks it,
+    as it checks the iOS launch screen.
+  -->
+  <meta name="theme-color" content="#151218">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Podcasts AM">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Podcasts AM</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #151218; }
+    #loading {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+    }
+    #loading img { width: 96px; height: 96px; border-radius: 22px; }
+    #loading .ring {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 3px solid rgba(208, 188, 255, 0.25); border-top-color: #d0bcff;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { #loading .ring { animation: none; } }
+    noscript p, #loading p {
+      color: #e6e0e9; font: 16px/1.5 system-ui, sans-serif;
+      text-align: center; padding: 48px 24px; margin: 0;
+    }
+    #loading p { padding: 0 24px; }
+    #loading a { color: #d0bcff; }
+    #loading.failed .ring { display: none; }
+  </style>
+</head>
+<body>
+  <div id="loading" aria-busy="true" aria-label="Podcasts AM">
+    <img src="icons/Icon-192.png" alt="">
+    <div class="ring"></div>
+    <!-- Shown by flutter_bootstrap.js when the app does not come up. -->
+    <p hidden>Podcasts AM could not be loaded. · Podcasts AM konnte nicht geladen werden.<br>
+      <a href="/">Reload · Neu laden</a></p>
+  </div>
+  <noscript>
+    <p>Podcasts AM needs JavaScript. · Podcasts AM braucht JavaScript.</p>
+  </noscript>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
