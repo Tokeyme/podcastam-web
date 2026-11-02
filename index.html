@@ -6,7 +6,7 @@
     points it at the build's own folder (r/<build>/), so a new build never
     mixes with files a browser still holds from the last one.
   -->
-  <base href="/r/83f2e7c7e4a4/">
+  <base href="/r/5b113441d792/">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,6 +73,18 @@
     <!-- Static pages that work without it (tool/web_landing.py). -->
     <p><a href="/top/">Top podcasts in the US right now</a></p>
   </noscript>
+  <!-- Hidden diagnosis (web/diag.js): only with ?diag in the address, then for
+       the rest of the tab's life. Loaded before the app so it sees its start. -->
+  <script>
+    (function () {
+      var on = /[?&]diag(=|&|$)/.test(location.search);
+      try {
+        if (on) sessionStorage.setItem('podcastam.diag', '1');
+        else on = sessionStorage.getItem('podcastam.diag') === '1';
+      } catch (e) {}
+      if (on) document.write('<script src="diag.js"><\/script>');
+    })();
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
