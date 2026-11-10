@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     Replaced by the value of `--base-href` at build time; tool/web_site.py
     points it at the build's own folder (r/<build>/), so a new build never
     mixes with files a browser still holds from the last one.
   -->
-  <base href="/r/b70f315e7228/">
+  <base href="/r/fba43dd76634/">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,8 @@
   <link rel="icon" type="image/png" href="favicon.png"/>
 
   <!-- Read before the app starts (link previews, crawlers that run no script). Once it
-       runs, the app sets the tab title to "Podcasts AM" (onGenerateTitle in lib/main.dart),
-       and a crawler that renders the page sees that one. -->
+       runs, the app sets the same tab title again (onGenerateTitle in lib/main.dart),
+       and a crawler that renders the page sees that one: keep the two alike. -->
   <title>Podcasts AM – listen to podcasts in your browser</title>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Podcasts AM","url":"https://podcast.amapps.app/"},{"@type":"WebApplication","name":"Podcasts AM","url":"https://podcast.amapps.app/","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","description":"A free podcast app that runs in the browser: Apple's podcast charts for more than 40 countries, search and subscriptions, no account.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}</script>
   <link rel="manifest" href="manifest.json">
@@ -71,7 +71,7 @@
   <noscript>
     <p>Podcasts AM needs JavaScript. · Podcasts AM braucht JavaScript.</p>
     <!-- Static pages that work without it (tool/web_landing.py). -->
-    <p><a href="/top/">Top podcasts in the US right now</a></p>
+    <p><a href="/top/">Top podcasts and episodes in the US</a></p>
   </noscript>
   <!-- Hidden diagnosis (web/diag.js): only with ?diag in the address, then for
        the rest of the tab's life. Loaded before the app so it sees its start. -->
