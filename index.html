@@ -85,6 +85,27 @@
       if (on) document.write('<script src="diag.js"><\/script>');
     })();
   </script>
+  <!-- Back on the start screen leaves the app through SystemNavigator.pop, and the
+       engine takes its history handling down on the way out (BrowserHistory.exit:
+       tearDown, then back). When Forward brings the very same page back from the
+       browser's back/forward cache, that handling stays gone, and the next Back on
+       a show page left the app instead of closing the page (A6, browser Echt-Test
+       navigation.zurueck_vor_mit_bfcache). So a page restored from that cache loads
+       afresh when the engine's mark on the history entry is gone; the app comes back
+       where it was, as after F5. Left any other way (address bar, bookmark) the
+       handling is intact and the entry still carries the mark ({flutter: true}, or
+       {origin: true} / serialCount with a Router): then the page stays as it was.
+       Should a future engine mark its entries differently, this loads afresh every
+       time, which is safe. -->
+  <script>
+    window.addEventListener('pageshow', function (event) {
+      if (!event.persisted) return;
+      var s = history.state;
+      var intact = !!s && typeof s === 'object' &&
+          (s.flutter === true || s.origin === true || 'serialCount' in s);
+      if (!intact) location.reload();
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
